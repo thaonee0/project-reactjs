@@ -16,21 +16,48 @@ class ModalUser extends Component {
     }
 
     toggle = () => {
-        alert('click modal toggle');
-    }
+        this.props.toggleFromParent();
+    } 
 
     render() {
         console.log('Check child props', this.props);
         console.log('Check child open modal', this.props.isOpen)
         return (
-            <Modal isOpen={this.props.isOpen} toggle={() => {this.toggle()}} className={'hi'}>
+            <Modal 
+                isOpen={this.props.isOpen} 
+                toggle={() => {this.toggle()}} 
+                className={'modal-user-container'}
+                size="lg"
+                // centered
+            >
             <ModalHeader toggle={() => {this.toggle()}}>Modal title</ModalHeader>
             <ModalBody>
-                meo
+                    <div className="modal-user-body">
+                        <div className="input-container">
+                            <label>Email</label>
+                            <input type="text" />
+                        </div>
+                        <div className="input-container">
+                            <label>Password</label>
+                            <input type="password" />
+                        </div>
+                        <div className="input-container">
+                            <label>First name</label>
+                            <input type="text" />
+                        </div>
+                        <div className="input-container">
+                            <label>Last name</label>
+                            <input type="text" />
+                        </div>
+                        <div className="input-container max-width-input">
+                            <label>Address</label>
+                            <input type="text" />
+                        </div>
+                    </div>
             </ModalBody>
             <ModalFooter>
-                <button color="primary" onClick={() => {this.toggle()}}>A</button>{''}
-                <button color="secondary" onClick={() => {this.toggle()}}>B</button>
+                <button color="primary" className="px-3" onClick={() => {this.toggle()}}>Save changes</button>{''}
+                <button color="secondary" className="px-3" onClick={() => {this.toggle()}}>Close</button>
             </ModalFooter>
             </Modal>
         )
